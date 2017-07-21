@@ -16,7 +16,8 @@ RUN apt-get install -y \
         default-jdk \
         links \
         git \
-        unzip
+        unzip \
+        netcat
 
 RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
         ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
