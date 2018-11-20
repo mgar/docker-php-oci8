@@ -3,6 +3,7 @@ FROM php:7.2-apache
 LABEL maintainers="Miguel Ángel García <mgarcia.inf@gmail.com>"
 
 RUN apt-get update
+RUN mkdir -p /usr/share/man/man1
 RUN apt-get install -y \
         apt-utils \
         libmcrypt-dev \
@@ -23,7 +24,6 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
         ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
 
 RUN docker-php-ext-install -j$(nproc) \
-        mcrypt \
         zip \
         bcmath \ 
         ldap \
@@ -44,6 +44,7 @@ RUN ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus
 
 RUN apt-get install libaio-dev -y
 RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8
+RUN pecl install mcrypt-1.0.1
 
 ADD php/oci8.ini /usr/local/etc/php/conf.d/oci8.ini
 
