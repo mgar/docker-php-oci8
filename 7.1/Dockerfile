@@ -42,6 +42,8 @@ RUN unzip /tmp/instantclient-sqlplus-linux.x64-11.2.0.4.0.zip -d /usr/local/
 RUN ln -s /usr/local/instantclient_11_2 /usr/local/instantclient
 RUN ln -s /usr/local/instantclient/libclntsh.so.11.1 /usr/local/instantclient/libclntsh.so
 RUN ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus
+RUN echo '/usr/local/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf' && \
+    ldconfig
 
 RUN apt-get install libaio-dev -y
 RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8
