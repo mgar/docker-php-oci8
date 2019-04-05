@@ -2,6 +2,7 @@ FROM php:7.1
 
 LABEL maintainers="Miguel Ángel García <mgarcia.inf@gmail.com>"
 
+RUN mkdir -p /usr/share/man/man1
 RUN apt-get update
 RUN apt-get install -y \
         apt-utils \
